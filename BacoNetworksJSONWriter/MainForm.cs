@@ -25,7 +25,6 @@ namespace BacoNetworksJSONWriter
         private void MainForm_Load(object sender, EventArgs e)
         {
             createJSONButton.Enabled = false;
-
         }
 
         private void MainForm_DragEnter(object sender, DragEventArgs e)
@@ -43,7 +42,6 @@ namespace BacoNetworksJSONWriter
                 return;
             }
 
-
             DataSet testSet = new DataSet("testSet");
             testSet.Namespace = "NetFrameWork";
             DataTable table = new DataTable();
@@ -53,10 +51,7 @@ namespace BacoNetworksJSONWriter
             DataColumn typeColumn = new DataColumn("type", typeof(string));
             DataColumn itemColumn = new DataColumn("item");
             DataColumn artifactColumn = new DataColumn("artifact", typeof(Dictionary<object, object>));
-            
-            //idColumn.AutoIncrement = true;
 
-            
             table.Columns.Add(idColumn);
             table.Columns.Add(nameColumn);
             table.Columns.Add(typeColumn);
@@ -86,9 +81,6 @@ namespace BacoNetworksJSONWriter
                         int size = (int)info.Length;
                         string MD5 = CalculateMD5(files);
 
-
-                        //MessageBox.Show(parseMe);
-
                         Dictionary<object, object> Dict = new Dictionary<object, object>
                 {
                     { "size", size },
@@ -114,11 +106,7 @@ namespace BacoNetworksJSONWriter
             }
 
             testSet.AcceptChanges();
-
             CompleteJSON = JsonConvert.SerializeObject(testSet, Formatting.Indented);
-
-            //textBox1.Text = CompleteJSON;
-
             createJSONButton.Enabled = true;
         }
 
