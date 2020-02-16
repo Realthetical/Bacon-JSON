@@ -49,13 +49,11 @@ namespace BacoNetworksJSONWriter
             DataColumn idColumn = new DataColumn("id", typeof(string));
             DataColumn nameColumn = new DataColumn("name", typeof(string));
             DataColumn typeColumn = new DataColumn("type", typeof(string));
-            DataColumn itemColumn = new DataColumn("item");
             DataColumn artifactColumn = new DataColumn("artifact", typeof(Dictionary<object, object>));
 
             table.Columns.Add(idColumn);
             table.Columns.Add(nameColumn);
             table.Columns.Add(typeColumn);
-            table.Columns.Add(itemColumn);
             table.Columns.Add(artifactColumn);
             testSet.Tables.Add(table);
 
@@ -68,7 +66,6 @@ namespace BacoNetworksJSONWriter
                     zip.ExtractSelectedEntries("mcmod.info", ExtractExistingFileAction.OverwriteSilently);
                     string firstRead = File.ReadAllText("mcmod.info");
                     string parseMe = firstRead.Substring(1, firstRead.Length - 3);
-                    //System.Threading.Thread.Sleep(50);
                     try
                     {
                         var jRead = JsonConvert.DeserializeObject<dynamic>(parseMe);
@@ -92,7 +89,6 @@ namespace BacoNetworksJSONWriter
                         newRow["id"] = modid;
                         newRow["name"] = name;
                         newRow["type"] = "ForgeMod";
-                        newRow["item"] = "item " + 1;
                         newRow["artifact"] = Dict;
                         table.Rows.Add(newRow);
                     }
