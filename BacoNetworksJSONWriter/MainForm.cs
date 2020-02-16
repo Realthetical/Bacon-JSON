@@ -134,19 +134,6 @@ namespace BacoNetworksJSONWriter
             }
         }
 
-        private void deserialiseJSON(string strJSON)
-        {
-            try
-            {
-                var jRead = JsonConvert.DeserializeObject<dynamic>(strJSON);
-                MessageBox.Show(jRead.name);
-            }
-            catch(Exception ex)
-            {
-
-            }
-        }
-
         private void createJSONButton_Click(object sender, EventArgs e)
         {
             if ((textBox2.Text != "") && (CompleteJSON != ""))
@@ -154,11 +141,6 @@ namespace BacoNetworksJSONWriter
                 File.WriteAllText(textBox2.Text + ".json", CompleteJSON);
             }
             
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //oops
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
